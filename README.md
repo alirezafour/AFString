@@ -1,0 +1,2 @@
+# AFString
+personal string class
