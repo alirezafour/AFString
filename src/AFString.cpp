@@ -97,4 +97,8 @@ AF::AFString &AF::AFString::operator+=(std::string &string) {
     return *this;
 }
 
+bool AF::AFString::operator==(const std::string &string) const {
+    return this->mString == string;
+}
+
 
