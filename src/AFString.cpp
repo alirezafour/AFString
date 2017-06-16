@@ -22,7 +22,9 @@ AF::AFString::~AFString() {
 
 }
 
-AF::AFString::AFString(const std::string &string) : mString(string) { }
+AF::AFString::AFString(const std::string &string) : mString(string) {
+
+}
 
 AF::AFString::AFString(const AF::AFString &string) {
     if(string != *this)
@@ -74,8 +76,8 @@ AF::AFString &AF::AFString::operator=(AF::AFString &string) {
     return *this;
 }
 
-AF::AFString::AFString(const char * string) {
-    this->mString = string;
+AF::AFString::AFString(const char * string) : mString(string) {
+
 }
 
 AF::AFString &AF::AFString::operator=(const char * string) {
@@ -106,15 +108,13 @@ AF::AFString AF::AFString::operator+(const AFString &string) {
     return result;
 }
 
-AF::AFString::AFString(AF::AFString &&string) {
-    this->mString = string.to_std_string();
-    string.mString = "";
-
+AF::AFString::AFString(AF::AFString &&string) : mString(string.mString) {
+    string.mString.clear();
 }
 
 AF::AFString &AF::AFString::operator=(AF::AFString &&string) {
-    this->mString = string.to_std_string();
-    string.mString = "";
+    this->mString = string.mString;
+    string.mString.clear();
     return *this;
 }
 

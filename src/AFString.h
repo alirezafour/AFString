@@ -9,6 +9,7 @@
 #include <boost/algorithm/string.hpp>
 #include <vector>
 
+//starting namespace block
 namespace AF {
 
 
@@ -25,20 +26,20 @@ namespace AF {
          * Creating string with a std string like this AF::AFString s = "test";
          *
          */
-        AFString(const std::string &);
+        AFString(const std::string &string);
         /**
          * You can create a string from another string like this
          * AF::AFString s = {" some thing"}; AFString s2 = s;
          */
-        AFString(const AFString &);
+        AFString(const AFString &string);
         /**
          * You can create a string from a char *
+         * @param string the char string you create a AFString from
          */
-        AFString(const char *);
+        AFString(const char *string);
         /**
          * this is the move constructor.
-         *
-         * @param string
+         * @param string the AFString that you move it to the object
          */
         AFString(AFString &&string);
         /**
@@ -83,76 +84,76 @@ namespace AF {
          *
          * @return The left side of the operator in case you can use this more than once like this s = s1 = s2;
          */
-        virtual AFString &operator = (AFString &);
+        virtual AFString &operator = (AFString &string);
         /**
          * this is the move operator.
          * you need it because you have move constructor.
          * @return
          */
-        virtual AFString &operator = (AFString &&);
+        virtual AFString &operator = (AFString &&string);
         /**
          * Whenever you set a char * to a string you call this operator
          * @return The pointer to the object
          */
-        virtual AFString &operator = (const char *);
+        virtual AFString &operator = (const char *string);
         /**
          * Whenever you set a std::string to the string you call this
          * @return The pointer to the object
          */
-        virtual AFString &operator = (const std::string &);
+        virtual AFString &operator = (const std::string &string);
         /**
          * Whenever you want to add to the string with += operator you call this
          * @return The pointer to the object
          */
-        virtual AFString &operator += (const AFString &);
+        virtual AFString &operator += (const AFString &string);
         /**
          * Whenever you want to add std::string to the string with += operator you call this
          * @return The pointer to the object
          */
-        virtual AFString &operator += (const std::string &);
+        virtual AFString &operator += (const std::string &string);
         /**
          * Whenever you want ot add two AFStrings you use this
          * and also you can use it more than once in one line of code like this s = afs1 + afs2 + afs3;
          * @return
          */
-        virtual AFString operator + (const AFString &);
+        virtual AFString operator + (const AFString &string);
 
         //comparison operators
         /**
          * Whenever you want to compare two string and understand that they are equal or not you use this operator
          * @return It return true when they are equal
          */
-        virtual bool operator == (const AFString & ) const;
+        virtual bool operator == (const AFString &string) const;
         /**
          * Whenever you want to compare a string with std::string and understand that they are equal or not you use this operator
          * @return It return true when they are equal
          */
-        virtual bool operator == (const std::string & ) const;
+        virtual bool operator == (const std::string &string) const;
         /**
          * Whenever you want to compare two string and understand that they are equal or not you use this operator
          * @return It return true when they are not equal
          */
-        virtual bool operator != (const AFString & ) const;
+        virtual bool operator != (const AFString &string) const;
         /**
          * Whenever you want to compare two string and understand that the left side is bigger or not you use this operator
          * @return It return true when the left side is bigger
          */
-        virtual bool operator > (const AFString & ) const;
+        virtual bool operator > (const AFString &string) const;
         /**
          * Whenever you want to compare two string and understand that the right side is bigger or not you use this operator
          * @return It return true when the right side is bigger
          */
-        virtual bool operator < (const AFString & ) const;
+        virtual bool operator < (const AFString &string) const;
         /**
          * Whenever you want to compare two string and understand that the left side is bigger and equal or not  you use this operator
          * @return It return true when the left side is bigger or equal
          */
-        virtual bool operator >= (const AFString & ) const;
+        virtual bool operator >= (const AFString &string) const;
         /**
          * Whenever you want to compare two string and understand that the right side is bigger and equal or not  you use this operator
          * @return It return true when the right side is bigger or equal
          */
-        virtual bool operator <= (const AFString & ) const;
+        virtual bool operator <= (const AFString &string) const;
     };
 
 }
