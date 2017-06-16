@@ -6,7 +6,7 @@
 
 #include "../src/AFString.h"
 
-BOOST_AUTO_TEST_CASE(ConstructorCheckAndCoperativeOperator)
+BOOST_AUTO_TEST_CASE(AFStrinTestCase)
 {
     AF::AFString charString("test");
     AF::AFString charString2 = "test";
@@ -42,6 +42,7 @@ BOOST_AUTO_TEST_CASE(ConstructorCheckAndCoperativeOperator)
     //comparing obj == std::string
     BOOST_ASSERT(charString3 == s);
 
-
-
+    charString = charString + charString2 + charString3;
+    charString2 = charString2 + charString2 + charString3;
+    BOOST_ASSERT(charString == charString2);
 }

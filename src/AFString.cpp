@@ -40,7 +40,7 @@ std::string AF::AFString::to_std_string() const {
     return mString;
 }
 
-AF::AFString &AF::AFString::operator+=(AF::AFString &string) {
+AF::AFString &AF::AFString::operator+=(const AF::AFString &string) {
     this->mString += string.to_std_string();
     return *this;
 }
@@ -87,18 +87,35 @@ bool AF::AFString::is_empty() {
     return this->mString.empty();
 }
 
-AF::AFString &AF::AFString::operator=(std::string &string) {
+AF::AFString &AF::AFString::operator=(const std::string &string) {
     this->mString = string;
     return *this;
 }
 
-AF::AFString &AF::AFString::operator+=(std::string &string) {
+AF::AFString &AF::AFString::operator+=(const std::string &string) {
     this->mString += string;
     return *this;
 }
 
 bool AF::AFString::operator==(const std::string &string) const {
     return this->mString == string;
+}
+
+AF::AFString AF::AFString::operator+(const AFString &string) {
+    AF::AFString result(this->mString + string.to_std_string());
+    return result;
+}
+
+AF::AFString::AFString(AF::AFString &&string) {
+    this->mString = string.to_std_string();
+    string.mString = "";
+
+}
+
+AF::AFString &AF::AFString::operator=(AF::AFString &&string) {
+    this->mString = string.to_std_string();
+    string.mString = "";
+    return *this;
 }
 
 

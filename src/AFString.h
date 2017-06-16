@@ -36,6 +36,12 @@ namespace AF {
          */
         AFString(const char *);
         /**
+         * this is the move constructor.
+         *
+         * @param string
+         */
+        AFString(AFString &&string);
+        /**
          * The empty distructor
          */
         virtual ~AFString();
@@ -79,6 +85,12 @@ namespace AF {
          */
         virtual AFString &operator = (AFString &);
         /**
+         * this is the move operator.
+         * you need it because you have move constructor.
+         * @return
+         */
+        virtual AFString &operator = (AFString &&);
+        /**
          * Whenever you set a char * to a string you call this operator
          * @return The pointer to the object
          */
@@ -87,17 +99,23 @@ namespace AF {
          * Whenever you set a std::string to the string you call this
          * @return The pointer to the object
          */
-        virtual AFString &operator = (std::string &);
+        virtual AFString &operator = (const std::string &);
         /**
          * Whenever you want to add to the string with += operator you call this
          * @return The pointer to the object
          */
-        virtual AFString &operator += (AFString &);
+        virtual AFString &operator += (const AFString &);
         /**
          * Whenever you want to add std::string to the string with += operator you call this
          * @return The pointer to the object
          */
-        virtual AFString &operator += (std::string &);
+        virtual AFString &operator += (const std::string &);
+        /**
+         * Whenever you want ot add two AFStrings you use this
+         * and also you can use it more than once in one line of code like this s = afs1 + afs2 + afs3;
+         * @return
+         */
+        virtual AFString operator + (const AFString &);
 
         //comparison operators
         /**
