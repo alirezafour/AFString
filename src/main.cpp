@@ -5,7 +5,7 @@ using namespace std;
 
 int main()
 {
-    AF::AFString s{"Hello   world"};
+    af::AFString s{"Hello   world"};
 
     cout << s.to_std_string() << endl;
     for(auto& w : s.to_lower_copy().split())

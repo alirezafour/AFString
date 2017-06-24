@@ -10,7 +10,7 @@
 #include <vector>
 
 //starting namespace block
-namespace AF {
+namespace af {
 
 
     class AFString {

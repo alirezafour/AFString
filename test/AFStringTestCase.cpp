@@ -7,17 +7,17 @@
 #include "../src/AFString.h"
 
 BOOST_AUTO_TEST_CASE(ConstructorandCompareTestCase) {
-    AF::AFString charString("test");
-    AF::AFString charString2 = "test";
-    AF::AFString charString3 = {"test"};
-    AF::AFString string(charString);
+    af::AFString charString("test");
+    af::AFString charString2 = "test";
+    af::AFString charString3 = {"test"};
+    af::AFString string(charString);
     std::string s{"string"};
-    AF::AFString stdString(s);
+    af::AFString stdString(s);
     std::string s2{"string"};
-    AF::AFString stdString2 = s2;
-    AF::AFString stdString3 = {s2};
-    AF::AFString string2 = string;
-    AF::AFString string3 = {string};
+    af::AFString stdString2 = s2;
+    af::AFString stdString3 = {s2};
+    af::AFString string2 = string;
+    af::AFString string3 = {string};
 
     //comparing object
     BOOST_ASSERT(charString == charString2);
@@ -34,9 +34,9 @@ BOOST_AUTO_TEST_CASE(ConstructorandCompareTestCase) {
 BOOST_AUTO_TEST_CASE(plusEqualTestCase)
 {
     std::string s = "hello";
-    AF::AFString string1 = "test";
-    AF::AFString string2 = "test";
-    AF::AFString string3 = "test";
+    af::AFString string1 = "test";
+    af::AFString string2 = "test";
+    af::AFString string3 = "test";
 
     //obj += obj
     string1 += string2; // result : testtest
@@ -52,9 +52,9 @@ BOOST_AUTO_TEST_CASE(plusEqualTestCase)
 
 BOOST_AUTO_TEST_CASE(PlusTestCases)
 {
-    AF::AFString charString = {"Hello"};
-    AF::AFString charString2 = {"Hello"};
-    AF::AFString charString3 = {"Hello"};
+    af::AFString charString = {"Hello"};
+    af::AFString charString2 = {"Hello"};
+    af::AFString charString3 = {"Hello"};
     charString = charString + charString2 + charString3;
     charString2 = charString2 + charString2 + charString3;
     BOOST_ASSERT(charString == charString2);
@@ -63,6 +63,6 @@ BOOST_AUTO_TEST_CASE(PlusTestCases)
 BOOST_AUTO_TEST_CASE(charStarsTestCase)
 {
     char CC[] = "helo helo helo";
-    AF::AFString newString = CC;
+    af::AFString newString = CC;
     BOOST_ASSERT(newString == "helo helo helo");
 }

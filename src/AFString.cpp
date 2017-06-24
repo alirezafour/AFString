@@ -4,29 +4,29 @@
 
 #include "AFString.h"
 
-std::vector<AF::AFString> AF::AFString::split(const std::string &delimiter) const {
+std::vector<af::AFString> af::AFString::split(const std::string &delimiter) const {
     std::vector<std::string> parts;
     boost::split(parts, mString, boost::is_any_of(delimiter), boost::token_compress_on);
     return std::vector<AFString>(parts.begin(), parts.end());
 }
 
-AF::AFString AF::AFString::to_lower_copy() const {
+af::AFString af::AFString::to_lower_copy() const {
     return {boost::to_lower_copy(mString)};
 }
 
-size_t AF::AFString::get_length() const {
+size_t af::AFString::get_length() const {
     return mString.length();
 }
 
-AF::AFString::~AFString() {
+af::AFString::~AFString() {
 
 }
 
-AF::AFString::AFString(const std::string &string) : mString(string) {
+af::AFString::AFString(const std::string &string) : mString(string) {
 
 }
 
-AF::AFString::AFString(const AF::AFString &string) {
+af::AFString::AFString(const af::AFString &string) {
     if(string != *this)
     {
         this->mString = string.to_std_string();
@@ -34,91 +34,91 @@ AF::AFString::AFString(const AF::AFString &string) {
 }
 
 
-AF::AFString::AFString() {
+af::AFString::AFString() {
 
 }
 
-std::string AF::AFString::to_std_string() const {
+std::string af::AFString::to_std_string() const {
     return mString;
 }
 
-AF::AFString &AF::AFString::operator+=(const AF::AFString &string) {
+af::AFString &af::AFString::operator+=(const af::AFString &string) {
     this->mString += string.to_std_string();
     return *this;
 }
 
-bool AF::AFString::operator==(const AF::AFString &string) const {
+bool af::AFString::operator==(const af::AFString &string) const {
     return this->mString == string.to_std_string();
 }
 
-bool AF::AFString::operator!=(const AF::AFString &string) const {
+bool af::AFString::operator!=(const af::AFString &string) const {
     return this->mString != string.to_std_string();
 }
 
-bool AF::AFString::operator>(const AF::AFString &string) const {
+bool af::AFString::operator>(const af::AFString &string) const {
     return this->mString > string.to_std_string();
 }
 
-bool AF::AFString::operator<(const AF::AFString &string) const {
+bool af::AFString::operator<(const af::AFString &string) const {
     return this->mString < string.to_std_string();
 }
 
-bool AF::AFString::operator>=(const AF::AFString &string) const {
+bool af::AFString::operator>=(const af::AFString &string) const {
     return this->mString >= string.to_std_string();
 }
 
-bool AF::AFString::operator<=(const AF::AFString &string) const {
+bool af::AFString::operator<=(const af::AFString &string) const {
     return this->mString <= string.to_std_string();
 }
 
-AF::AFString &AF::AFString::operator=(AF::AFString &string) {
+af::AFString &af::AFString::operator=(af::AFString &string) {
     this->mString = string.to_std_string();
     return *this;
 }
 
-AF::AFString::AFString(const char * string) : mString(string) {
+af::AFString::AFString(const char * string) : mString(string) {
     this->mString = string;
 }
 
-AF::AFString &AF::AFString::operator=(const char * string) {
+af::AFString &af::AFString::operator=(const char * string) {
     this->mString = string;
     return *this;
 }
 
-bool AF::AFString::is_empty() {
+bool af::AFString::is_empty() {
     return this->mString.empty();
 }
 
-AF::AFString &AF::AFString::operator=(const std::string &string) {
+af::AFString &af::AFString::operator=(const std::string &string) {
     this->mString = string;
     return *this;
 }
 
-AF::AFString &AF::AFString::operator+=(const std::string &string) {
+af::AFString &af::AFString::operator+=(const std::string &string) {
     this->mString += string;
     return *this;
 }
 
-bool AF::AFString::operator==(const std::string &string) const {
+bool af::AFString::operator==(const std::string &string) const {
     return this->mString == string;
 }
 
-AF::AFString AF::AFString::operator+(const AFString &string) {
-    AF::AFString result(this->mString + string.to_std_string());
+af::AFString af::AFString::operator+(const AFString &string) {
+    af::AFString result(this->mString + string.to_std_string());
     return result;
 }
 
-AF::AFString::AFString(AF::AFString &&string) : mString(string.mString) {
+af::AFString::AFString(af::AFString &&string) : mString(string.mString) {
     string.mString.clear();
 }
 
-AF::AFString &AF::AFString::operator=(AF::AFString &&string) {
+af::AFString &af::AFString::operator=(af::AFString &&string) {
     this->mString = string.mString;
     string.mString.clear();
     return *this;
 }
 
-bool AF::AFString::operator==(const char *string) const {
+bool af::AFString::operator==(const char *string) const {
     return this->mString == string;
 }
 
