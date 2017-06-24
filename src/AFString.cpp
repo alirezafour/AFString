@@ -77,7 +77,7 @@ AF::AFString &AF::AFString::operator=(AF::AFString &string) {
 }
 
 AF::AFString::AFString(const char * string) : mString(string) {
-
+    this->mString = string;
 }
 
 AF::AFString &AF::AFString::operator=(const char * string) {
@@ -116,6 +116,10 @@ AF::AFString &AF::AFString::operator=(AF::AFString &&string) {
     this->mString = string.mString;
     string.mString.clear();
     return *this;
+}
+
+bool AF::AFString::operator==(const char *string) const {
+    return this->mString == string;
 }
 
 

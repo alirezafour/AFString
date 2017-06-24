@@ -129,6 +129,7 @@ namespace AF {
          * @return It return true when they are equal
          */
         virtual bool operator == (const std::string &string) const;
+        virtual bool operator == (const char* string) const;
         /**
          * Whenever you want to compare two string and understand that they are equal or not you use this operator
          * @return It return true when they are not equal
