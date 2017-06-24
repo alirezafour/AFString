@@ -6,15 +6,14 @@
 
 #include "../src/AFString.h"
 
-BOOST_AUTO_TEST_CASE(AFStrinTestCase)
-{
+BOOST_AUTO_TEST_CASE(ConstructorandCompareTestCase) {
     AF::AFString charString("test");
     AF::AFString charString2 = "test";
     AF::AFString charString3 = {"test"};
     AF::AFString string(charString);
-    std::string s {"string"};
+    std::string s{"string"};
     AF::AFString stdString(s);
-    std::string s2  {"string"};
+    std::string s2{"string"};
     AF::AFString stdString2 = s2;
     AF::AFString stdString3 = {s2};
     AF::AFString string2 = string;
@@ -30,19 +29,40 @@ BOOST_AUTO_TEST_CASE(AFStrinTestCase)
     BOOST_ASSERT(stdString == stdString2);
     BOOST_ASSERT(stdString == stdString3);
     BOOST_ASSERT(stdString2 == stdString3);
+}
+
+BOOST_AUTO_TEST_CASE(plusEqualTestCase)
+{
+    std::string s = "hello";
+    AF::AFString string1 = "test";
+    AF::AFString string2 = "test";
+    AF::AFString string3 = "test";
 
     //obj += obj
-    charString += charString2; // result : testtest
-    charString2 += charString3;// result : testtest
-    BOOST_ASSERT(charString == charString2);
+    string1 += string2; // result : testtest
+    string2 += string3;// result : testtest
+    BOOST_ASSERT(string1 == string2);
 
     //obt += std::string
-    charString3 += s;
+    string3 += s;
     s = "test" + s;
     //comparing obj == std::string
-    BOOST_ASSERT(charString3 == s);
+    BOOST_ASSERT(string3 == s);
+}
 
+BOOST_AUTO_TEST_CASE(PlusTestCases)
+{
+    AF::AFString charString = {"Hello"};
+    AF::AFString charString2 = {"Hello"};
+    AF::AFString charString3 = {"Hello"};
     charString = charString + charString2 + charString3;
     charString2 = charString2 + charString2 + charString3;
     BOOST_ASSERT(charString == charString2);
+}
+
+BOOST_AUTO_TEST_CASE(charStarsTestCase)
+{
+    char CC[] = "helo helo helo";
+    AF::AFString newString = CC;
+    BOOST_ASSERT(newString == "helo helo helo");
 }
