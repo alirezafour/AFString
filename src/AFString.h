@@ -21,7 +21,7 @@ namespace af {
         /**
          * Default Constructor for Creating empty sting
          */
-        AFString();
+        explicit AFString();
         /**
          * Creating string with a std string like this AF::AFString s = "test";
          *
@@ -41,7 +41,7 @@ namespace af {
          * this is the move constructor.
          * @param string the AFString that you move it to the object
          */
-        AFString(AFString &&string);
+        AFString(AFString &&string) noexcept ;
         /**
          * The empty distructor
          */
@@ -90,7 +90,7 @@ namespace af {
          * you need it because you have move constructor.
          * @return
          */
-        virtual AFString &operator = (AFString &&string);
+        virtual AFString &operator = (AFString &&string) noexcept ;
         /**
          * Whenever you set a char * to a string you call this operator
          * @return The pointer to the object

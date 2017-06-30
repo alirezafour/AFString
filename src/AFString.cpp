@@ -108,11 +108,12 @@ af::AFString af::AFString::operator+(const AFString &string) {
     return result;
 }
 
-af::AFString::AFString(af::AFString &&string) : mString(string.mString) {
+af::AFString::AFString(af::AFString &&string) noexcept {
+    this->mString = string.mString;
     string.mString.clear();
 }
 
-af::AFString &af::AFString::operator=(af::AFString &&string) {
+af::AFString &af::AFString::operator=(af::AFString &&string) noexcept {
     this->mString = string.mString;
     string.mString.clear();
     return *this;

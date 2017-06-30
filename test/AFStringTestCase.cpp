@@ -62,7 +62,7 @@ BOOST_AUTO_TEST_CASE(PlusTestCases)
 
 BOOST_AUTO_TEST_CASE(charStarsTestCase)
 {
-    char CC[] = "helo helo helo";
+    char CC[] = "hello hello hello";
     af::AFString newString = CC;
-    BOOST_ASSERT(newString == "helo helo helo");
+    BOOST_ASSERT(newString == "hello hello hello");
 }
